@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAppointmentServer.Domain", "eAppointmentServer.Domain\eAppointmentServer.Domain.csproj", "{A960CB62-904A-478C-A198-E6A36B214C42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAppointmentServer.Application", "eAppointmentServer.Application\eAppointmentServer.Application.csproj", "{D73D04DF-CF72-4280-B654-9756B101583C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A960CB62-904A-478C-A198-E6A36B214C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A960CB62-904A-478C-A198-E6A36B214C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A960CB62-904A-478C-A198-E6A36B214C42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D73D04DF-CF72-4280-B654-9756B101583C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D73D04DF-CF72-4280-B654-9756B101583C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D73D04DF-CF72-4280-B654-9756B101583C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D73D04DF-CF72-4280-B654-9756B101583C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
