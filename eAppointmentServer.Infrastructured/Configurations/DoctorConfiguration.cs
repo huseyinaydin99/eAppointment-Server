@@ -13,7 +13,7 @@ internal sealed class DoctorConfiguration : IEntityTypeConfiguration<Doctor>
         //builder.HasIndex(x => new { x.FirstName, x.LastName }).IsUnique();
 
         builder.Property(p => p.Department)
-            .HasConversion(v => v.Value, v => DepartmentEnum.FromValue(v))
-            .HasColumnName("Department");
+            .HasConversion(v => v.Value, v => DepartmentEnum.FromValue(v))//db ye yazarken enum'un değerini yaz okurken yine değeri oku ama o değeri bana enum nesnesine geçerek dön. 
+            .HasColumnName("Department");//enum alanını veritabanında hangi tür olarak saklayacağını EntityFramework bilemiyor. Bunun için bu ayarı yaptık.
     }
 }
