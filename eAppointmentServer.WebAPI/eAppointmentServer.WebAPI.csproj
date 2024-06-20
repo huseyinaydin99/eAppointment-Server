@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\eAppointmentServer.Application\eAppointmentServer.Application.csproj" />
+    <ProjectReference Include="..\eAppointmentServer.Domain\eAppointmentServer.Domain.csproj" />
+    <ProjectReference Include="..\eAppointmentServer.Infrastructured\eAppointmentServer.Infrastructured.csproj" />
+  </ItemGroup>
+
+</Project>
