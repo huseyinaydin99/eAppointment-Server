@@ -27,6 +27,6 @@ internal sealed class DeleteAppointmentByIdCommandHandler(
         appointmentRepository.Delete(appointment);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return "Randevu başarı ile oluşturuldu";
+        return "Randevu başarı ile silindi";
     }
 }

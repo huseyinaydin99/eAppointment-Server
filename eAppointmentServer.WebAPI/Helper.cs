@@ -12,7 +12,7 @@ public static class Helper
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
             if (!userManager.Users.Any())
             {
-                userManager.CreateAsync(new()
+                await userManager.CreateAsync(new()
                 {
                     FirstName = "Hüseyin",
                     LastName = "Aydın",

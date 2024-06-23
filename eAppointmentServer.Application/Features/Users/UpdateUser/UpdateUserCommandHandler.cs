@@ -20,14 +20,14 @@ internal sealed class UpdateUserCommandHandler(
         AppUser? user = await userManager.FindByIdAsync(request.Id.ToString());
         if (user is null)
         {
-            return Result<string>.Failure("User not found");
+            return Result<string>.Failure("Kullanıcı kaydı bulunamadı");
         }
 
         if(user.Email != request.Email)
         {
             if (await userManager.Users.AnyAsync(p => p.Email == request.Email))
             {
-                return Result<string>.Failure("Email already exists");
+                return Result<string>.Failure("E-posta adresi zaten var");
             }
         }
         
@@ -35,7 +35,7 @@ internal sealed class UpdateUserCommandHandler(
         {
             if (await userManager.Users.AnyAsync(p => p.UserName == request.UserName))
             {
-                return Result<string>.Failure("User name already exists");
+                return Result<string>.Failure("Kullanıcı adı zaten var");
             }
         }       
 
@@ -69,6 +69,6 @@ internal sealed class UpdateUserCommandHandler(
             await unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        return "User update is successful";
+        return "Kullanıcı kaydı başarı ile güncellendi";
     }
 }
