@@ -3,8 +3,10 @@ using eAppointmentServer.Application;
 using eAppointmentServer.Domain.Entities;
 using eAppointmentServer.Infrastructure;
 using eAppointmentServer.WebAPI;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,7 +35,33 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(setup =>
+{
+    var jwtSecuritySheme = new OpenApiSecurityScheme
+    {
+        BearerFormat = "JWT",
+        Name = "JWT Authentication - Hüseyin AYDIN",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = JwtBearerDefaults.AuthenticationScheme,
+        Description = "Elde etmiþ olduðun Json Web Token'i buraya gir ama Bearer kýsmý olmasýn!",
+
+        Reference = new OpenApiReference
+        {
+            Id = JwtBearerDefaults.AuthenticationScheme,
+            Type = ReferenceType.SecurityScheme
+        }
+    };
+
+    setup.AddSecurityDefinition(jwtSecuritySheme.Reference.Id, jwtSecuritySheme);
+
+    setup.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        { 
+            jwtSecuritySheme, Array.Empty<string>() 
+        }
+    });
+});
 
 var app = builder.Build();
 
@@ -46,8 +74,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+//.NET 8'de bunlar olmadan kimlik doðrulama ve yetkilendirme çalýþýyor sýkýntý yok!
+/*
 app.UseAuthentication();
 app.UseAuthorization();
+*/
 
 app.UseCors();
 
